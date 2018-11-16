@@ -68,7 +68,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "I am a Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
+      var message = greeting + "I am a Chat Bot. I am still under developement!";
       sendMessage(senderId, {text: message});
     });
   }
@@ -101,7 +101,9 @@ function processMessage(event) {
               case "rating":
                   //getMovieDetail(senderId, formattedMsg);
                   break;
-
+              case "time":
+                  timer(15,senderId);
+                  break;
               default:
                   //findMovie(senderId, formattedMsg);
           }
@@ -127,4 +129,10 @@ function sendMessage(recipientId, message) {
       console.log("Error sending message: " + response.error);
     }
   });
+}
+
+function timer(time, recipientId){
+  for (var i=1;i<=time;i++){
+    setTimeout(sendMessage(recipientId,{text: i.toString()}), 1000*i);
+  }
 }
