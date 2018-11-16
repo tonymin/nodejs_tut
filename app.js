@@ -102,7 +102,6 @@ function processMessage(event) {
                   //getMovieDetail(senderId, formattedMsg);
                   break;
               case "time":
-                  timer(15,senderId);
                   break;
               default:
                   //findMovie(senderId, formattedMsg);
@@ -129,10 +128,4 @@ function sendMessage(recipientId, message) {
       console.log("Error sending message: " + response.error);
     }
   });
-}
-
-function timer(time, recipientId){
-  for (var i=1;i<=time;i++){
-    setTimeout(sendMessage(recipientId,{text: i.toString()}), 1000*i);
-  }
 }
